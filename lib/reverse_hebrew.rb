@@ -1,7 +1,7 @@
 # coding: utf-8
 
 # A module to reverse visual Hebrew text into logical Hebrew text
-module Scrapping::ReverseHebrew
+module ReverseHebrew
 
   def self.is_hebrew?(s)
     m = s=~ /[א-ת]/
