@@ -1,6 +1,7 @@
 # coding: utf-8
+require "reverse_hebrew.rb"
 require 'rspec'
-require "../lib/reverse_hebrew.rb"
+
 describe ReverseHebrew do
   it "identifies hebrew chars in string" do
     ReverseHebrew.is_hebrew?("gרjkhjk").should  == true
@@ -33,8 +34,8 @@ describe ReverseHebrew do
   end
 
   it "reverses hebrew" do
-    s = "בית קטן בערבה, מס 123, מיקוד 1010, ת.ד. 202"
-    ReverseHebrew.reverse_hebrew(s).should == "202 .ד.ת ,1010 דוקימ ,123 סמ ,הברעב"
+    s = "בית קטן בערבה, מס 123, מיקוד 1010, עמק"
+    ReverseHebrew.reverse_hebrew(s).should == "קמע ,1010 דוקימ ,123 סמ ,הברעב ןטק תיב"
   end
 
   it "reverses words order when numbers are present" do
@@ -45,7 +46,7 @@ describe ReverseHebrew do
     s = "0570 27/01.א.ב"
     ReverseHebrew.reverse_around_number(s).should == "א.ב.27/01 0570"
     s = "00550 א-ב"
-    ReverseHebrew.reverse_around_number(s).should == "א-ב 0055"
+    ReverseHebrew.reverse_around_number(s).should == "א-ב 00550"
   end
 
 end
